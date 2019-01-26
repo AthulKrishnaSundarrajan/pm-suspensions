@@ -1,0 +1,33 @@
+component mass
+% Mass
+
+nodes
+    M = foundation.mechanical.translational.translational; % :top
+end
+
+outputs
+    p = { 0 , 'm' }; % p:bottom
+    a = { 0 , 'm/s/s' }; % a:bottom
+end
+
+parameters
+    mass = { 1, 'kg' }; % mass
+end
+
+variables
+    v = { value = { 0, 'm/s' }, priority = priority.high }; % velocity
+    f = { 0, 'N' };                                         % force
+end
+
+branches
+    f : M.f -> *;
+end
+
+equations
+    f == mass * a;
+    v == M.v;
+    p == integ(v); % position output
+    a == v.der; % acceleration output
+end
+
+end

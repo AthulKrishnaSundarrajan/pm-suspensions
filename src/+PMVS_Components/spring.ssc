@@ -1,0 +1,22 @@
+component spring < foundation.mechanical.translational.branch
+% Translational Spring
+
+parameters
+    spr_rate = { 1000, 'N/m' };  % Spring rate
+end
+
+outputs
+    p = { 0 , 'm' }; % p:right
+end
+
+variables
+    x = { value = { 0, 'm'}, priority = priority.high };    % Deformation
+end
+
+equations
+    v == x.der;
+    f == spr_rate * x;
+    p == x; % position output
+end
+
+end

@@ -1,0 +1,32 @@
+component force
+% Ideal Force Source
+
+inputs
+    S = { 0, 'N' }; % S:bottom
+end
+
+nodes
+    C = foundation.mechanical.translational.translational; % C:bottom
+    R = foundation.mechanical.translational.translational; % R:top
+end
+
+outputs
+    p = { 0 , 'm' }; % p:bottom
+end
+
+variables(Access = protected)
+    v = { 0, 'm/s' };       % Velocity
+    f = { 0, 'N' };         % Force
+end
+
+branches
+    f : R.f -> C.f;
+end
+
+equations
+    v == C.v - R.v;
+    f == -S;
+    p == integ(v); % position output
+end
+
+end
