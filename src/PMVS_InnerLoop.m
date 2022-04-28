@@ -144,16 +144,15 @@ end
 % combine
 setup.A = A; setup.B = Bu; setup.d = d;
 setup.L = L; setup.UB = UB; setup.LB = LB; setup.Z = Z;
-setup.t0 = 0; setup.tf = p.tf; setup.p = p;
+setup.t0 = 0; setup.tf = p.tf; setup.auxdata = p;
 
 % DT QP options
-opts = [];
-opts.dt.defects = 'HS'; % Hermite-Simpson 
-opts.dt.quadrature = 'CQHS'; % composite quadratic Hermite-Simpson
-opts.dt.mesh = 'ED'; % equidistant nodes
-% opts.dt.nt = 1000; % normally set outside of this function
-opts.dt.nt = p.nt; % normally set outside of this function
-opts.general.displevel = 0; % silent
+opts.dt.defects = 'HS';
+opts.dt.quadrature = 'CQHS';
+opts.dt.mesh = 'ED';
+opts.dt.nt = 1000;
+opts.general.displevel = 0;
+opts.solver.tolerance = 1e-16;
 
 % form and solve problem
 [T,U,Y,~,F,~,~] = DTQP_solve(setup,opts);

@@ -1,0 +1,15 @@
+!.gitignore
+
+# ignore certain file extensions
+*.ini
+*.asv
+
+# ignore certain folders
+.private*/
+*_figs/
+__pycache__/
+
+# ignore specific files
+notes.txt
+oeis-notes.xlsx
+~$oeis-notes.xlsx

@@ -163,15 +163,16 @@ setup.A = A; setup.B = Bu; setup.d = d;
 setup.L = L; setup.UB = UB; setup.LB = LB; setup.Z = Z;
 
 % DT QP options
-opts = [];
-opts.Defectmethod = 'HS'; % Hermite-Simpson 
-opts.Quadmethod = 'CQHS';
-opts.displevel = 0;
-opts.NType = 'ED';
+opts.dt.defects = 'HS';
+opts.dt.quadrature = 'CQHS';
+opts.dt.mesh = 'ED';
+opts.dt.nt = 1000;
+opts.general.displevel = 1;
+opts.solver.tolerance = 1e-16;
 
 setup.t0 = 0;
 setup.tf = p.tf;
-setup.p = p; 
+setup.auxdata = p; 
 
 % form and solve problem
 [T,U,Y,~,F,~,~] = DTQP_solve(setup,opts);

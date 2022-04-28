@@ -13,14 +13,14 @@ function PMVStest_SingleArchitecture
 close all; clc; closeallbio; bdclose('all');
 
 % architecture specification
-% L = {'s','u','f','b','p','p'};
-% A = [     0     0     0     0     1     0;
-%      0     0     0     0     0     1;
-%      0     0     0     0     1     1;
-%      0     0     0     0     1     1;
-%      1     0     1     1     0     0;
-%      0     1     1     1     0     0];
-% Graph.A = A; Graph.L = L;
+L = {'s','u','f','b','p','p'};
+A = [     0     0     0     0     1     0;
+     0     0     0     0     0     1;
+     0     0     0     0     1     1;
+     0     0     0     0     1     1;
+     1     0     1     1     0     0;
+     0     1     1     1     0     0];
+Graph.A = A; Graph.L = L;
 
 % L = {'s','u','f'};
 % A = [0     0     1;
@@ -70,9 +70,9 @@ close all; clc; closeallbio; bdclose('all');
 % A = A + A';
 % Graph.A = A; Graph.L = L;
 
-load('A:\google-drive\Projects\ID053-pm-suspensions\pm-suspensions\examples\PMVS_ex1_graphs.mat','SuspensionGraphs')
-I = 635;
-Graph.A = SuspensionGraphs(I).A; Graph.L = SuspensionGraphs(I).L; 
+% load('A:\google-drive\Projects\ID053-pm-suspensions\pm-suspensions\examples\PMVS_ex1_graphs.mat','SuspensionGraphs')
+% I = 635;
+% Graph.A = SuspensionGraphs(I).A; Graph.L = SuspensionGraphs(I).L; 
 
 % co-design problem specification
 p = PMVS_ex1_codesign;
@@ -92,6 +92,8 @@ p.nt = 500; % 500
 % get the outputs
 [F,a,O] = PMVS_Codesign(p,Graph,a.xpopt);
 
+% visualize graph
+Grph = graph(Graph.A); plot(Grph,'NodeLabel',Graph.L)
 keyboard
 end
 % co-design problem specification

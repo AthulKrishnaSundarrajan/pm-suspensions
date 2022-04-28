@@ -182,11 +182,11 @@ a.comp(6).name = 'U';
 a.mainpath = mfoldername('PMVS_Main',[]);
 a.modelpath = msavename(mfilename('fullpath'),'tempmodels');
 timestr = datestr(datetime('now'),'yyyymmddTHHMMSSFFF');
-basename = 'PMVS_model'; % base name
+basename = 'PMVS_Model'; % base name
 a.sys = [basename,'_',timestr,'_',num2str(round(1000000*rand(1)))];
 
 % copy base model to models folder
-copyfile(fullfile(a.mainpath,'models',[basename,'_R',version('-release'),'.slx']),...
+copyfile(fullfile(a.mainpath,'models',[basename,'_R','2018b','.slx']),...
     fullfile(a.modelpath,[a.sys,'.slx']));
 
 % load the new model in the original workspace

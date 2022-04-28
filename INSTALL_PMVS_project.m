@@ -86,7 +86,7 @@ function RequiredWebZips
 
     % zip 2
 	ind = ind + 1; % increment
-	zips(ind).url = 'https://github.com/danielrherber/pm-architectures-project/archive/master.zip';
+	zips(ind).url = 'https://github.com/danielrherber/pm-architectures-project/archive/refs/heads/master.zip';
 	zips(ind).folder = 'MFX 58799';
 	zips(ind).test = 'INSTALL_PMA_project';
 
